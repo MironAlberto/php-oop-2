@@ -1,10 +1,12 @@
 <?php
 
     require_once __DIR__.'/Product.php';
+    require_once __DIR__.'/traits/HasColor.php';
+    require_once __DIR__.'/traits/HasWidth.php';
 
     class PetKennel extends Product {
-        public $color;
-        public $width;
+        use HasColor;
+        use HasWidth;
 
         public function __construct(
             $title,

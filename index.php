@@ -11,55 +11,76 @@
 
     $products = [];
 
-    $sampleProduct = new Product (
-        'Sample Product',
-        'https://t3.ftcdn.net/jpg/06/14/05/50/360_F_614055030_wRnorUV9sscrLfsqIyaGwY4Kpg4JPypR.jpg',
-        8.99,
-        2000,
-        'Cats are typically solitary animals and don/t mind being left at home alone. Dogs are pack animals and are fine together. They will 
-        wait for you at the door all day. Cats are small, thus being prey to larger preditors.',
-        $dogCategory
-    );
-    $products[] = $sampleProduct;
+    try{
+        $sampleProduct = new Product (
+            'Sample Product',
+            'https://t3.ftcdn.net/jpg/06/14/05/50/360_F_614055030_wRnorUV9sscrLfsqIyaGwY4Kpg4JPypR.jpg',
+            8.99,
+            2000,
+            'Cats are typically solitary animals and don/t mind being left at home alone. Dogs are pack animals and are fine together. They will 
+            wait for you at the door all day. Cats are small, thus being prey to larger preditors.',
+            $dogCategory
+        );
+        $products[] = $sampleProduct;    
+    }
+    catch (Exception $exception){
+        echo '<h2>'.$exception->getMessage().'</h2>';
+    }
 
-    $dogBone = new PetToy (
-        'Dog Bone',
-        'Plastic',
-        'Red',
-        'https://forthefurkids.com/cdn/shop/products/squeaky-dog-toy-trixie-bone_1024x1024@2x.jpg?v=1658346505',
-        6.99,
-        500,
-        'Dog bone (plural dog bones) a bone that is given to a dog to chew on and play with, similar to a dog biscuit. 
-        They can be real bones, or they can be made of other materials like plastic or leather.',
-        $dogCategory
-    );
-    $products[] = $dogBone;
+    
+    try{
+        $dogBone = new PetToy (
+            'Dog Bone',
+            'Plastic',
+            'Red',
+            'https://forthefurkids.com/cdn/shop/products/squeaky-dog-toy-trixie-bone_1024x1024@2x.jpg?v=1658346505',
+            6.99,
+            500,
+            'Dog bone (plural dog bones) a bone that is given to a dog to chew on and play with, similar to a dog biscuit. 
+            They can be real bones, or they can be made of other materials like plastic or leather.',
+            $dogCategory
+        );
+        $products[] = $dogBone;
+    }
+    catch (Exception $exception){
+        echo '<h2>'.$exception->getMessage().'</h2>';
+    }
 
-    $catFood = new PetFood (
-        'Cat Food',
-        'Salted',
-        '19/01/2025',
-        'https://www.deeliver.co.za/cdn/shop/files/whiskas-meaty-nuggets-cat-food-500g-chicken-turkey.jpg?v=1687024101',
-        10.99,
-        300,
-        'Cat food manufacturers blend mixtures of ingredients, including meat and fish, vegetables, cereals, vitamins and minerals to produce foods that will 
-        satisfy the nutritional requirements of your cat and achieve the right balance of nutrients.',
-        $catCategory
-    );
-    $products[] = $catFood;
+    try{
+        $catFood = new PetFood (
+            'Cat Food',
+            'Salted',
+            '19/01/2025',
+            'https://www.deeliver.co.za/cdn/shop/files/whiskas-meaty-nuggets-cat-food-500g-chicken-turkey.jpg?v=1687024101',
+            10.99,
+            300,
+            'Cat food manufacturers blend mixtures of ingredients, including meat and fish, vegetables, cereals, vitamins and minerals to produce foods that will 
+            satisfy the nutritional requirements of your cat and achieve the right balance of nutrients.',
+            $catCategory
+        );
+        $products[] = $catFood;
+    }
+    catch (Exception $exception){
+        echo '<h2>'.$exception->getMessage().'</h2>';
+    }
 
-    $dogKennel = new PetKennel (
-        'Dog Kennel',
-        'Black & Brown',
-        '70',
-        'https://m.media-amazon.com/images/I/51Do76XgcQL._AC_UF1000,1000_QL80_.jpg',
-        35.99,
-        150,
-        'Along with giving them access to plenty of fresh air and sunlight, kennels keep pets safe whenever 
-        they/re outside, preventing them from running away and getting into trouble. They will also keep your dog from pestering neighbors or getting into fights with other dogs.',
-        $dogCategory
-    );
-    $products[] = $dogKennel;
+    try{
+        $dogKennel = new PetKennel (
+            'Dog Kennel',
+            'Black & Brown',
+            '70',
+            'https://m.media-amazon.com/images/I/51Do76XgcQL._AC_UF1000,1000_QL80_.jpg',
+            35.99,
+            150,
+            'Along with giving them access to plenty of fresh air and sunlight, kennels keep pets safe whenever 
+            they/re outside, preventing them from running away and getting into trouble. They will also keep your dog from pestering neighbors or getting into fights with other dogs.',
+            $dogCategory
+        );
+        $products[] = $dogKennel;
+    }
+    catch (Exception $exception){
+        echo '<h2>'.$exception->getMessage().'</h2>';
+    }
 
 
 ?>
@@ -128,7 +149,7 @@
                                                 Material: <?php echo $product->material; ?>
                                             </li>
                                             <li>
-                                                Color: <?php echo $product->color; ?>
+                                                Color: <?php echo $product->getColor(); ?>
                                             </li>
                                         <?php
                                             }
@@ -145,7 +166,7 @@
                                             else if (get_class($product) == 'PetKennel'){
                                         ?>
                                             <li>
-                                                Color: <?php echo $product->color; ?>
+                                                Color: <?php echo $product->getColor(); ?>
                                             </li>
                                             <li>
                                                 Width: <?php echo $product->width; ?> cm

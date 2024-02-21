@@ -1,10 +1,12 @@
 <?php
 
     require_once __DIR__.'/Product.php';
+    require_once __DIR__.'/traits/HasMaterial.php';
+    require_once __DIR__.'/traits/HasColor.php';
 
     class PetToy extends Product {
-        public $material;
-        public $color;
+        use HasMaterial;
+        use HasColor;
 
         public function __construct(
             $title,
